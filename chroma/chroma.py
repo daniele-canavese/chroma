@@ -169,13 +169,13 @@ class KeyValueTable(Table):
     A table for printing key-value pairs.
     """
 
-    def __init__(self, highlight: bool = False, live: bool = False) -> None:
+    def __init__(self, highlight: bool = False) -> None:
         """
             Create the table.
 
         :param highlight: Toggle the data highlighting.
         """
-        super().__init__("key", "value", highlight=True)
+        super().__init__("key", "value", highlight=highlight)
         self._table.show_header = False
         self._table.pad_edge = False
         self._table.show_edge = False
