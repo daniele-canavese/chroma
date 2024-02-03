@@ -128,7 +128,7 @@ def pprint(
     console.print(*objects, style=level, highlight=highlight)
 
 
-class Table(ConsoleRenderable):
+class Table(ConsoleRenderable):  # pylint: disable=too-few-public-methods
     """
     A table.
     """
