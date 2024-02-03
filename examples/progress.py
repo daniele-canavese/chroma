@@ -18,11 +18,13 @@ for i in ProgressBar(range(1000), description="doing stuff..."):
 # Printing something while a progress bar is running.
 for i in ProgressBar(range(10)):
     pprint("iteration", i, highlight=True)
-    sleep(0.25)  # nosemgrep: python.lang.best-practice.sleep.arbitrary-sleep
+    # nosemgrep: python.lang.best-practice.sleep.arbitrary-sleep
+    sleep(0.25)
 
 # Updating a table while a progress bar is running using the `table` parameter of the `ProgressBar` class.
 table = Table("what", "number", highlight=True)
 for i in ProgressBar(range(1000), table=table):
     if i % 42 == 0:
         table.add("random", random())
-    sleep(0.001)  # nosemgrep: python.lang.best-practice.sleep.arbitrary-sleep
+    # nosemgrep: python.lang.best-practice.sleep.arbitrary-sleep
+    sleep(0.001)
