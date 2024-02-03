@@ -4,7 +4,7 @@
 
 # `chroma`
 
-#### Pretty printing for Python
+*Pretty printing for Python*
 
 [![dani](https://img.shields.io/badge/Daniele-Canavese-5822C2?logo=linkedin&&labelColor=0A66C2)](https://www.linkedin.com/in/daniele-canavese/)
 &nbsp;
