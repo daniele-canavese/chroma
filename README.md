@@ -1,8 +1,10 @@
-![logo](images/chroma.svg)
+<div style="text-align: center;">
+
+<img src="images/chroma.svg" alt="logo" style="max-width: 50%;"/>
 
 # `chroma`
 
-**Pretty printing for Python**
+#### Pretty printing for Python
 
 [![dani](https://img.shields.io/badge/Daniele-Canavese-5822C2?logo=linkedin&&labelColor=0A66C2)](https://www.linkedin.com/in/daniele-canavese/)
 &nbsp;
@@ -13,6 +15,8 @@
 [Overview](#overview) •
 [Installation and removal](#installation-and-removal) •
 [Getting started](#getting-started)
+
+</div>
 
 ## Overview
 
