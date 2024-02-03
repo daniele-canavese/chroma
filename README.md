@@ -3,8 +3,8 @@
 <img src="images/chroma.svg" alt="logo" style="max-width: 50%;"/>
 
 # `chroma`
-
-<h4>Pretty printing for Python</h4>
+ 
+**Pretty printing for Python**
 
 [![dani](https://img.shields.io/badge/Daniele-Canavese-5822C2?logo=linkedin&&labelColor=0A66C2)](https://www.linkedin.com/in/daniele-canavese/)
 &nbsp;
