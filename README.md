@@ -32,7 +32,6 @@ In particular, it allows you to:
 - select a severity level to accentuate important information;
 - use progress bars with automatic ETAs.
 
-
 ## Installation and removal
 
 `chroma` can be easily installed via `pipenv` with the following command:
