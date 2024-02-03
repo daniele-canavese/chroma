@@ -9,8 +9,8 @@ from chroma import ProgressBar, Table, pprint
 
 # A simple progress bar.
 for i in ProgressBar(range(1000)):
-    # nosemgrep
-    sleep(0.001)  # nosemgrep
+    # OK:arbitrary-sleep
+    sleep(0.001)  # OK:arbitrary-sleep
 
 # A progress bar with a description.
 for i in ProgressBar(range(1000), description="doing stuff..."):
