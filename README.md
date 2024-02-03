@@ -3,7 +3,7 @@
 <img src="images/chroma.svg" alt="logo" style="max-width: 50%;"/>
 
 # `chroma`
- 
+
 **Pretty printing for Python**
 
 [![dani](https://img.shields.io/badge/Daniele-Canavese-5822C2?logo=linkedin&&labelColor=0A66C2)](https://www.linkedin.com/in/daniele-canavese/)
@@ -20,11 +20,13 @@
 
 ## Overview
 
-`chroma` is a Python package for pretty printing various data with a built-in support for colors and emojis.
+`chroma` is a Python package for pretty printing various data with a built-in
+support for colors and emojis.
 
 In particular, it allows you to:
 
-- pretty print text messages with automatic highlighting of many data types such as number, strings and URLs;
+- pretty print text messages with automatic highlighting of many data types such
+  as number, strings and URLs;
 - nicely format tables where individual rows can be emphasized;
 - use progress bars with automatic ETAs;
 - select a severity level to accentuate important information.
@@ -45,11 +47,14 @@ $ pipenv uninstall chroma
 
 ## Getting started
 
-The most important function in `chroma` is `pprint`, which is used to pretty print anything. The `Table` instances
-obviously represent tabular data and can be fed to `pprint` as well. In addition, the `ProgressBar` class is an iterable
+The most important function in `chroma` is `pprint`, which is used to pretty
+print anything. The `Table` instances
+obviously represent tabular data and can be fed to `pprint` as well. In
+addition, the `ProgressBar` class is an iterable
 that automatically display a progress bar.
 
-The `examples` folder contains many commented usage examples of `chroma`. In particular:
+The `examples` folder contains many commented usage examples of `chroma`. In
+particular:
 
 - `examples/printing.py` shows how to pretty print various text messages;
 - `examples/progress.py` contains some progress bar instances;
