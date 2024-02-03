@@ -24,5 +24,5 @@ for i in ProgressBar(range(10)):
 table = Table("what", "number", highlight=True)
 for i in ProgressBar(range(1000), table=table):
     if i % 42 == 0:
-        table.add("random", random())  # nosemgrep: python_random_rule-random
+        table.add("random", random())  # nosec B311
     sleep(0.001)
