@@ -26,11 +26,11 @@ support for colors and emojis.
 
 In particular, it allows you to:
 
+- nicely format tables where individual rows can be emphasized;
 - pretty print text messages with automatic highlighting of many data types such
   as number, strings and URLs;
-- nicely format tables where individual rows can be emphasized;
-- use progress bars with automatic ETAs;
-- select a severity level to accentuate important information.
+- select a severity level to accentuate important information;
+- use progress bars with automatic ETAs.
 
 ## Installation and removal
 
