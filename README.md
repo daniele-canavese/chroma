@@ -19,6 +19,7 @@
 
 </div>
 
+
 ## Overview
 
 `chroma` is a Python package for pretty printing various data with a built-in
@@ -31,6 +32,7 @@ In particular, it allows you to:
   as number, strings and URLs;
 - select a severity level to accentuate important information;
 - use progress bars with automatic ETAs.
+
 
 ## Installation and removal
 
@@ -45,6 +47,7 @@ Conversely, it can be uninstalled with:
 ```shell
 pipenv uninstall chroma
 ```
+
 
 ## Getting started
 
