@@ -122,7 +122,7 @@ def pprint(
     elif level == Level.ALERT:
         objects = [Panel(*objects, title=f"{_icons[level]} Alert {_icons[level]}", expand=False)]
     else:
-        if icon != "":
+        if icon:
             objects = [_icons[level], *objects]
 
     console.print(*objects, style=level, highlight=highlight)
@@ -168,7 +168,7 @@ class Table(ConsoleRenderable):
         self._table.add_row(*elements)
 
 
-class KeyValueTable(Table):
+class KeyValueTable(Table):  # pylint: disable=too-few-public-methods
     """
     A table for printing key-value pairs.
     """
