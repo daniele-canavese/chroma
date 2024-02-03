@@ -48,7 +48,6 @@ Conversely, it can be uninstalled with:
 pipenv uninstall chroma
 ```
 
-
 ## Getting started
 
 The most important function in `chroma` is `pprint`, which is used to pretty
