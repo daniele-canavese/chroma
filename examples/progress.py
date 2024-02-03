@@ -1,8 +1,7 @@
 """Progress bar examples."""
 
+from random import random
 from time import sleep
-
-from numpy.random import rand
 
 from chroma import ProgressBar, Table, pprint
 
@@ -25,5 +24,5 @@ for i in ProgressBar(range(10)):
 table = Table("what", "number", highlight=True)
 for i in ProgressBar(range(1000), table=table):
     if i % 42 == 0:
-        table.add("random", rand())
+        table.add("random", random())
     sleep(0.001)  # nosemgrep: arbitrary-sleep
