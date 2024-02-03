@@ -19,7 +19,6 @@
 
 </div>
 
-
 ## Overview
 
 `chroma` is a Python package for pretty printing various data with a built-in
