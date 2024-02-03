@@ -1,6 +1,5 @@
+<h1 style="text-align: center;"><img src="images/chroma.svg" alt="logo" style="max-width: 50%"/></h1>
 <div style="text-align: center;">
-
-<img src="images/chroma.svg" alt="logo" style="max-width: 50%;"/>
 
 # `chroma`
 
