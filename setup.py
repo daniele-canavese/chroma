@@ -1,9 +1,8 @@
 """Setup file."""
 
-from distutils.core import setup
 from os.path import abspath, dirname, join
 
-from setuptools import find_packages
+from setuptools import find_packages, setup
 
 cwd = dirname(abspath(__file__))
 with open(join(cwd, "README.md"), encoding="utf-8") as f:

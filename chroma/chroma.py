@@ -98,7 +98,9 @@ class Level(StrEnum):
     """Emergency level."""
 
 
-def pprint(*objects: Any, file: IO[str] | None = None, level: Level = Level.INFO, highlight: bool = False) -> None:
+def pprint(
+    *objects: Any, file: IO[str] | None = None, level: Level = Level.INFO, highlight: bool = False
+) -> None:
     """
     Pretty print various objects.
 
@@ -114,7 +116,9 @@ def pprint(*objects: Any, file: IO[str] | None = None, level: Level = Level.INFO
     icon = _icons[level]
 
     if level == Level.EMERGENCY:
-        objects = [Panel(*objects, title=f"{_icons[level]} Emergency {_icons[level]}", expand=False)]
+        objects = [
+            Panel(*objects, title=f"{_icons[level]} Emergency {_icons[level]}", expand=False)
+        ]
     elif level == Level.ALERT:
         objects = [Panel(*objects, title=f"{_icons[level]} Alert {_icons[level]}", expand=False)]
     else:
@@ -224,7 +228,9 @@ class ProgressBar(Iterable[ProgressType]):
     A progress bar.
     """
 
-    def __init__(self, sequence: Iterable[ProgressType], *, description: str = "", table: Table | None = None) -> None:
+    def __init__(
+        self, sequence: Iterable[ProgressType], *, description: str = "", table: Table | None = None
+    ) -> None:
         """
         Create the progress bar.
 
