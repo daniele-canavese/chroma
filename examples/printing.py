@@ -1,4 +1,4 @@
-"""Printing samples."""
+"""Printing examples."""
 
 from chroma import Level, pprint
 

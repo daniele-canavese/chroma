@@ -1,4 +1,4 @@
-"""Progress bar samples."""
+"""Progress bar examples."""
 
 from time import sleep
 

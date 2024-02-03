@@ -1,4 +1,4 @@
-"""Table samples."""
+"""Table examples."""
 
 from chroma import KeyValueTable, Level, Table, pprint
 
