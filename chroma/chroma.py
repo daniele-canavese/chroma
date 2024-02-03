@@ -185,7 +185,7 @@ class KeyValueTable(Table):  # pylint: disable=too-few-public-methods
         self._table.show_edge = False
 
 
-class _ProgressBar(Progress):
+class _ProgressBar(Progress):  # pylint: disable=too-few-public-methods
     """
     A custom progress bar.
     """
@@ -195,7 +195,7 @@ class _ProgressBar(Progress):
         Create the progress bar.
         """
         columns = [SpinnerColumn(finished_text=Text("✔", style="progress.elapsed"))]
-        if description != "":
+        if description:
             columns.append(TextColumn("[progress.description]{task.description}"))
         columns.extend(
             [
@@ -223,7 +223,7 @@ class _ProgressBar(Progress):
         yield renderable
 
 
-class ProgressBar(Iterable[ProgressType]):
+class ProgressBar(Iterable[ProgressType]):  # pylint: disable=too-few-public-methods
     """
     A progress bar.
     """
