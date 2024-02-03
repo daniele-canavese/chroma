@@ -27,9 +27,9 @@ pprint("This is the quoted string 'abc'.", highlight=True)
 pprint()
 
 # Collections too!
-pprint(f"This is the list {[1, 2, 3]}.", highlight=True)
-pprint(f"This is the set {{1, 2, 3}}.", highlight=True)
-pprint(f"This is the dictionary {{'a':1,'b':2,'c':3}}.", highlight=True)
+pprint("This is the list [1, 2, 3].", highlight=True)
+pprint("This is the set {1, 2, 3}.", highlight=True)
+pprint("This is the dictionary {'a':1,'b':2,'c':3}.", highlight=True)
 pprint()
 
 # The `level` parameter specifies the message severity.
