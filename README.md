@@ -1,6 +1,4 @@
-<div style="text-align: center;">
-
-<img src="images/chroma.svg" alt="logo" style="max-width: 50%;"/>
+![logo](images/chroma.svg)
 
 # `chroma`
 
@@ -15,8 +13,6 @@
 [Overview](#overview) •
 [Installation and removal](#installation-and-removal) •
 [Getting started](#getting-started)
-
-</div>
 
 ## Overview
 
@@ -36,13 +32,13 @@ In particular, it allows you to:
 `chroma` can be easily installed via `pipenv` with the following command:
 
 ```shell
-$ pipenv install -e git+https://github.com/daniele-canavese/chroma.git#egg=chroma
+pipenv install -e git+https://github.com/daniele-canavese/chroma.git#egg=chroma
 ```
 
 Conversely, it can be uninstalled with:
 
 ```shell
-$ pipenv uninstall chroma
+pipenv uninstall chroma
 ```
 
 ## Getting started
