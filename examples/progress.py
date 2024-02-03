@@ -9,8 +9,7 @@ from chroma import ProgressBar, Table, pprint
 
 # A simple progress bar.
 for i in ProgressBar(range(1000)):
-    # OK:arbitrary-sleep
-    sleep(0.001)  # OK:arbitrary-sleep
+    sleep(0.001)
 
 # A progress bar with a description.
 for i in ProgressBar(range(1000), description="doing stuff..."):
@@ -19,7 +18,7 @@ for i in ProgressBar(range(1000), description="doing stuff..."):
 # Printing something while a progress bar is running.
 for i in ProgressBar(range(10)):
     pprint("iteration", i, highlight=True)
-    sleep(0.25)  # nosemgrep:arbitrary-sleep
+    sleep(0.25)
 
 # Updating a table while a progress bar is running using the `table` parameter of the `ProgressBar`
 # class.
