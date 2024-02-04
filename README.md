@@ -22,7 +22,8 @@
 ## Overview
 
 `chroma` is a Python package for pretty printing various data with a built-in
-support for colors and emojis.
+support for colors and emojis. It is actually a wrapper around `rich` [1], a
+pretty printing library.
 
 In particular, it allows you to:
 
@@ -62,3 +63,8 @@ particular:
 - `examples/printing.py` shows how to pretty print various text messages;
 - `examples/progress.py` contains some progress bar instances;
 - `examples/table.py` presents different ways of printing tables.
+
+## References
+
+[1] [`rich`](https://github.com/Textualize/rich), a Python library for rich text
+and beautiful formatting in the terminal.
