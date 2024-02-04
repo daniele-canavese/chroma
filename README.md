@@ -37,8 +37,10 @@ In particular, it allows you to:
 `chroma` can be easily installed via `pipenv` with the following command:
 
 ```shell
-pipenv install -e git+https://github.com/daniele-canavese/chroma.git#egg=chroma
+pipenv install -e git+https://ACCESS_TOKEN@github.com/daniele-canavese/chroma.git#egg=chroma
 ```
+
+Where `ACCESS_TOKEN` is your GitHub's access token.
 
 Conversely, it can be uninstalled with:
 
