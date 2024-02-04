@@ -12,7 +12,7 @@ setup(
     name="chroma",
     version="0.1",
     packages=find_packages(),
-    python_requires=">=3.11",
+    python_requires=">=3.12",
     install_requires=[
         "rich>=13.7.0",
     ],
