@@ -14,7 +14,7 @@ setup(
     packages=find_packages(),
     python_requires=">=3.12",
     install_requires=[
-        "rich>=13.7.0",
+        "rich>=13.7.1",
     ],
     package_dir={"chroma": "chroma"},
     url="https://github.com/daniele-canavese/chroma",

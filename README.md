@@ -35,15 +35,23 @@ In particular, it allows you to:
 
 ## Installation and removal
 
-`chroma` can be easily installed via `pipenv` with the following command:
+`chroma` can be easily installed via `pipenv`.
+
+First, run the following command:
 
 ```shell
-pipenv install -e git+https://ACCESS_TOKEN@github.com/daniele-canavese/chroma.git#egg=chroma
+echo "ACCESS_TOKEN=..." >> .env
 ```
 
-Where `ACCESS_TOKEN` is your GitHub's access token.
+Where you have replaced `...` with your GitHub's access token.
 
-Conversely, it can be uninstalled with:
+Then, add the following line to your `Pipfile`:
+
+```
+chroma = { editable = true, git = "https://${ACCESS_TOKEN}@github.com/daniele-canavese/chroma.git" }
+```
+
+Conversely, `chroma` can be uninstalled with:
 
 ```shell
 pipenv uninstall chroma
