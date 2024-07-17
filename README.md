@@ -35,26 +35,38 @@ In particular, it allows you to:
 
 ## Installation and removal
 
-`chroma` can be easily installed via `pipenv`.
+`chroma` can be easily installed via `conda` (or `pipenv`).
 
-First, run the following command:
+### Development environment
+
+If you want to create an environment for developing `chroma`, just run the command:
 
 ```shell
-echo "ACCESS_TOKEN=..." >> .env
+conda env create --file environment.yml
 ```
 
-Where you have replaced `...` with your GitHub's access token.
+And to remove this environment launch:
 
-Then, add the following line to your `Pipfile`:
+```shell
+conda remove --name chroma --all
+```
+
+### Adding a dependency
+
+If, instead, you want to use `chroma` in one of your projects, just add the following dependencies in your `conda`'s `environment.yaml`:
 
 ```
-chroma = { editable = true, git = "https://${ACCESS_TOKEN}@github.com/daniele-canavese/chroma.git" }
+  - pip
+  - pip:
+      - "--editable=git+https://ACCESS_TOKEN@github.com/daniele-canavese/chroma.git#egg=chroma"
 ```
+
+Where `ACCESS_TOKEN` is you GitHub's access token.
 
 Conversely, `chroma` can be uninstalled with:
 
 ```shell
-pipenv uninstall chroma
+conda uninstall chroma
 ```
 
 ## Getting started

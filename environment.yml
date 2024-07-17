@@ -1,0 +1,6 @@
+name: chroma
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - rich>=13.7.1
