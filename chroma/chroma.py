@@ -5,7 +5,13 @@ from typing import Any, IO, Iterable, Sequence
 
 from rich.box import SIMPLE_HEAD
 from rich.columns import Columns
-from rich.console import Console, ConsoleOptions, ConsoleRenderable, RenderResult, RenderableType
+from rich.console import (
+    Console,
+    ConsoleOptions,
+    ConsoleRenderable,
+    RenderResult,
+    RenderableType,
+)
 from rich.panel import Panel
 from rich.pretty import pretty_repr
 from rich.progress import (
@@ -99,7 +105,10 @@ class Level(StrEnum):
 
 
 def pprint(
-    *objects: Any, file: IO[str] | None = None, level: Level = Level.INFO, highlight: bool = False
+    *objects: Any,
+    file: IO[str] | None = None,
+    level: Level = Level.INFO,
+    highlight: bool = False,
 ) -> None:
     """
     Pretty print various objects.
@@ -117,10 +126,18 @@ def pprint(
 
     if level == Level.EMERGENCY:
         objects = [
-            Panel(*objects, title=f"{_icons[level]} Emergency {_icons[level]}", expand=False)
+            Panel(
+                *objects,
+                title=f"{_icons[level]} Emergency {_icons[level]}",
+                expand=False,
+            )
         ]
     elif level == Level.ALERT:
-        objects = [Panel(*objects, title=f"{_icons[level]} Alert {_icons[level]}", expand=False)]
+        objects = [
+            Panel(
+                *objects, title=f"{_icons[level]} Alert {_icons[level]}", expand=False
+            )
+        ]
     else:
         if icon:
             objects = [_icons[level], *objects]
@@ -133,16 +150,23 @@ class Table(ConsoleRenderable):  # pylint: disable=too-few-public-methods
     A table.
     """
 
-    def __init__(self, *columns: Sequence[str], highlight: bool = False) -> None:
+    def __init__(
+        self, *columns: Sequence[str], title: str | None = None, highlight: bool = False
+    ) -> None:
         """
         Create the table.
 
         :param columns: The names of the table columns.
+        :param title: the title of the table
         :param highlight: Toggle the data highlighting.
         """
-        self._table = RichTable(*columns, box=SIMPLE_HEAD, highlight=highlight)
+        self._table = RichTable(
+            *columns, box=SIMPLE_HEAD, title=title, highlight=highlight
+        )
 
-    def __rich_console__(self, console: Console, options: ConsoleOptions) -> RenderResult:
+    def __rich_console__(
+        self, console: Console, options: ConsoleOptions
+    ) -> RenderResult:
         """
         Render the table.
 
@@ -219,7 +243,9 @@ class _ProgressBar(Progress):  # pylint: disable=too-few-public-methods
         if self.__table is None:
             renderable = bar_renderable
         else:
-            renderable = Columns((self.__table, bar_renderable), align="left", expand=True)
+            renderable = Columns(
+                (self.__table, bar_renderable), align="left", expand=True
+            )
         yield renderable
 
 
@@ -229,7 +255,11 @@ class ProgressBar(Iterable[ProgressType]):  # pylint: disable=too-few-public-met
     """
 
     def __init__(
-        self, sequence: Iterable[ProgressType], *, description: str = "", table: Table | None = None
+        self,
+        sequence: Iterable[ProgressType],
+        *,
+        description: str = "",
+        table: Table | None = None,
     ) -> None:
         """
         Create the progress bar.
@@ -249,4 +279,6 @@ class ProgressBar(Iterable[ProgressType]):  # pylint: disable=too-few-public-met
         :return: The next element of the sequence.
         """
         with self.__progress:
-            yield from self.__progress.track(self.__sequence, description=self.__description)
+            yield from self.__progress.track(
+                self.__sequence, description=self.__description
+            )

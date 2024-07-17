@@ -12,6 +12,14 @@ table.add(1.1, 2.2, 3.3)
 table.add("a", 2, 3.3)
 pprint(table)
 
+# A simple table with a title.
+table = Table("one", "two", "three", title="some title")
+table.add("a", "b", "c")
+table.add(1, 2, 3)
+table.add(1.1, 2.2, 3.3)
+table.add("a", 2, 3.3)
+pprint(table)
+
 # A table but with some highlighting.
 table = Table("x", "y", highlight=True)
 table.add("a", 1.0)

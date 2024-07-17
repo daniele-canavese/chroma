@@ -10,7 +10,7 @@ with open(join(cwd, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="chroma",
-    version="0.1",
+    version="0.2",
     packages=find_packages(),
     python_requires=">=3.12",
     install_requires=[
