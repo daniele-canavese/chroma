@@ -1,7 +1,8 @@
 """Printing facilities."""
 
 from enum import StrEnum, unique
-from typing import Any, IO, Iterable, Sequence
+from types import TracebackType
+from typing import Any, IO, Iterable, Self, Sequence
 
 from rich.box import SIMPLE_HEAD
 from rich.columns import Columns
@@ -20,6 +21,7 @@ from rich.progress import (
     Progress,
     ProgressType,
     SpinnerColumn,
+    TaskID,
     TaskProgressColumn,
     TextColumn,
     TimeRemainingColumn,
@@ -232,6 +234,7 @@ class _ProgressBar(Progress):  # pylint: disable=too-few-public-methods
         self.__table = table
         super().__init__(*columns, console=_console)
         self.live.vertical_overflow = "visible"
+        self.start()
 
     def get_renderables(self) -> Iterable[RenderableType]:
         """
@@ -256,7 +259,7 @@ class ProgressBar(Iterable[ProgressType]):  # pylint: disable=too-few-public-met
 
     def __init__(
         self,
-        sequence: Iterable[ProgressType],
+        sequence: Iterable[ProgressType] | None = None,
         *,
         description: str = "",
         table: Table | None = None,
@@ -282,3 +285,53 @@ class ProgressBar(Iterable[ProgressType]):  # pylint: disable=too-few-public-met
             yield from self.__progress.track(
                 self.__sequence, description=self.__description
             )
+
+    def add_task(self, *, description: str, total: float = 0) -> TaskID:
+        """
+        Add a new task.
+        :param description: the task description
+        :param total: the number of steps
+        :return: the task ID
+        """
+        return self.__progress.add_task(description, total=total)
+
+    def remove_task(self, task_id: TaskID) -> None:
+        """
+        Remove a new task.
+        :param task_id: the task ID
+        """
+        return self.__progress.remove_task(task_id)
+
+    def update_task(
+        self, task_id: TaskID, *, description: str | None = None, advance: float = 1
+    ) -> None:
+        """
+        Update a task
+        :param task_id: the task ID
+        :param description: the task description; set to None to not change it
+        :param advance: the advancement
+        """
+        self.__progress.update(
+            task_id=task_id, advance=advance, description=description
+        )
+
+    def __enter__(self) -> Self:
+        """
+        The enter action for the context manager.
+        :return: itself
+        """
+        return self
+
+    def __exit__(
+        self,
+        execution_type: type[BaseException],
+        value: BaseException,
+        traceback: TracebackType,
+    ) -> None:
+        """
+        The exit action for the context manager.
+        :param execution_type: the exception type
+        :param value: the exception value
+        :param traceback: the traceback
+        """
+        self.__progress.stop()
