@@ -159,7 +159,7 @@ class Table(ConsoleRenderable):  # pylint: disable=too-few-public-methods
         Create the table.
 
         :param columns: The names of the table columns.
-        :param title: the title of the table
+        :param title: The title of the table.
         :param highlight: Toggle the data highlighting.
         """
         self._table = RichTable(
@@ -199,13 +199,14 @@ class KeyValueTable(Table):  # pylint: disable=too-few-public-methods
     A table for printing key-value pairs.
     """
 
-    def __init__(self, highlight: bool = False) -> None:
+    def __init__(self, title: str | None = None, highlight: bool = False) -> None:
         """
-            Create the table.
+        Create the table.
 
+        :param title: The title of the table.
         :param highlight: Toggle the data highlighting.
         """
-        super().__init__("key", "value", highlight=highlight)
+        super().__init__("key", "value", title=title, highlight=highlight)
         self._table.show_header = False
         self._table.pad_edge = False
         self._table.show_edge = False
