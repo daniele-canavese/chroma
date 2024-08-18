@@ -4,7 +4,7 @@ from enum import StrEnum, unique
 from types import TracebackType
 from typing import Any, IO, Iterable, Self, Sequence
 
-from rich.box import SIMPLE_HEAD
+from rich.box import HORIZONTALS
 from rich.columns import Columns
 from rich.console import (
     Console,
@@ -163,7 +163,7 @@ class Table(ConsoleRenderable):  # pylint: disable=too-few-public-methods
         :param highlight: Toggle the data highlighting.
         """
         self._table = RichTable(
-            *columns, box=SIMPLE_HEAD, title=title, highlight=highlight
+            *columns, box=HORIZONTALS, title=title, highlight=highlight
         )
 
     def __rich_console__(
