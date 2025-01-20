@@ -35,7 +35,8 @@ table.add(1.1, 2.2, 3.3, level=Level.SUCCESS)
 table.add("a", 2, 3.3, level=Level.ERROR)
 pprint(table)
 
-# Key-value pairs are very common and can be printed with the special table class `KeyValueTable`.
+# Key-value pairs are very common and can be printed with the special table
+# class `KeyValueTable`.
 table = KeyValueTable()
 table.add("foo", 0.1)
 table.add("bar", 0.2)

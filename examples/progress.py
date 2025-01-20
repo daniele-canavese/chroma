@@ -33,8 +33,8 @@ with ProgressBar(description="multi tasking") as progress:
         sleep(0.1)
     progress.remove_task(task2)
 
-# Updating a table while a progress bar is running using the `table` parameter of the `ProgressBar`
-# class.
+# Updating a table while a progress bar is running using the `table` parameter
+# of the `ProgressBar` class.
 table = Table("what", "number", highlight=True)
 for i in ProgressBar(range(1000), table=table):
     if not i % 42:
