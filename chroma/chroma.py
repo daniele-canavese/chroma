@@ -82,9 +82,7 @@ _console = Console(theme=_theme, markup=False)
 
 @unique
 class Level(StrEnum):
-    """
-    The print level.
-    """
+    """The print level."""
 
     DEBUG = "debug"
     """Debugging level."""
