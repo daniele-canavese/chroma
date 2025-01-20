@@ -1,6 +1,6 @@
 [project]
 name = "chroma"
-version = "0.3.0"
+version = "0.3.1"
 description = "Pretty printing for Python"
 authors = [{ name = "Daniele Canavese", email = "daniele.canavese@irit.fr" }]
 license = "Apache-2.0"
