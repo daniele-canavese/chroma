@@ -123,7 +123,7 @@ def pprint(
     if file is None:
         console = _console
     else:
-        console = Console(theme=_theme, markup=False, file=file)
+        console = Console(theme=_theme, markup=True, file=file)
     icon = _icons[level]
 
     if level == Level.EMERGENCY:
