@@ -40,8 +40,7 @@ In particular, it allows you to:
 
 ### Usage
 
-`chroma` version `🅇.🅈.🅉-🄱` can be installed in a `poetry` environment with the
-following command:
+`chroma` can be installed in a `poetry` environment with the following command:
 
 ```shell
 poetry add https://github.com/daniele-canavese/chroma.git
