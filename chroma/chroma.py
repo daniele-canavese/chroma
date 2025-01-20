@@ -123,7 +123,7 @@ def pprint(
     if file is None:
         console = _console
     else:
-        console = Console(theme=_theme, markup=True, file=file)
+        console = Console(theme=_theme, file=file)
     icon = _icons[level]
 
     if level == Level.EMERGENCY:
@@ -148,9 +148,7 @@ def pprint(
 
 
 class Table(ConsoleRenderable):  # pylint: disable=too-few-public-methods
-    """
-    A table.
-    """
+    """A table."""
 
     def __init__(
         self, *columns: Sequence[str], title: str | None = None, highlight: bool = False
@@ -195,9 +193,7 @@ class Table(ConsoleRenderable):  # pylint: disable=too-few-public-methods
 
 
 class KeyValueTable(Table):  # pylint: disable=too-few-public-methods
-    """
-    A table for printing key-value pairs.
-    """
+    """A table for printing key-value pairs."""
 
     def __init__(self, title: str | None = None, highlight: bool = False) -> None:
         """
@@ -213,14 +209,10 @@ class KeyValueTable(Table):  # pylint: disable=too-few-public-methods
 
 
 class _ProgressBar(Progress):  # pylint: disable=too-few-public-methods
-    """
-    A custom progress bar.
-    """
+    """A custom progress bar."""
 
     def __init__(self, *, description: str = "", table: Table | None = None) -> None:
-        """
-        Create the progress bar.
-        """
+        """Create the progress bar."""
         columns = [SpinnerColumn(finished_text=Text("✔", style="progress.elapsed"))]
         if description:
             columns.append(TextColumn("[progress.description]{task.description}"))
@@ -254,9 +246,7 @@ class _ProgressBar(Progress):  # pylint: disable=too-few-public-methods
 
 
 class ProgressBar(Iterable[ProgressType]):  # pylint: disable=too-few-public-methods
-    """
-    A progress bar.
-    """
+    """A progress bar."""
 
     def __init__(
         self,
