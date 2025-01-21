@@ -3,7 +3,7 @@ name = "chroma"
 version = "0.3.1"
 description = "Pretty printing for Python"
 authors = [{ name = "Daniele Canavese", email = "daniele.canavese@irit.fr" }]
-license = "Apache-2.0"
+license = { text = "Apache-2.0", file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
