@@ -49,7 +49,7 @@ poetry add https://github.com/daniele-canavese/chroma.git
 Conversely, `chroma` can be uninstalled with:
 
 ```shell
-conda remove chroma
+poetry remove chroma
 ```
 
 ### Development
