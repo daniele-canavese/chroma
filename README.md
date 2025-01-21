@@ -43,7 +43,7 @@ In particular, it allows you to:
 `chroma` can be installed in a `poetry` environment with the following command:
 
 ```shell
-poetry add https://github.com/daniele-canavese/chroma.git
+poetry add git+https://github.com/daniele-canavese/chroma.git
 ```
 
 Conversely, `chroma` can be uninstalled with:
