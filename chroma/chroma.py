@@ -2,17 +2,11 @@
 
 from enum import StrEnum, unique
 from types import TracebackType
-from typing import Any, IO, Iterable, Self, Sequence
+from typing import IO, Any, Generator, Iterable, Self, Sequence
 
-from rich.box import HORIZONTALS
+from rich.box import HORIZONTALS, ROUNDED, SIMPLE
 from rich.columns import Columns
-from rich.console import (
-    Console,
-    ConsoleOptions,
-    ConsoleRenderable,
-    RenderResult,
-    RenderableType,
-)
+from rich.console import Console, ConsoleOptions, ConsoleRenderable, RenderableType, RenderResult
 from rich.panel import Panel
 from rich.pretty import pretty_repr
 from rich.progress import (
@@ -32,15 +26,14 @@ from rich.theme import Theme
 
 _theme = Theme(
     {
-        "debug": "italic gray50",
-        "info": "",
-        "notice": "bold italic bright_white",
-        "success": "green_yellow",
-        "warning": "gold1",
+        "heading1": "bold bright_white",
+        "heading2": "bold bright_white",
         "error": "deep_pink2",
-        "critical": "bold italic deep_pink2",
-        "alert": "deep_pink2",
-        "emergency": "bold italic deep_pink2",
+        "warning": "gold1",
+        "success": "green_yellow",
+        "info": "light_cyan1",
+        "emphasis": "italic bright_white",
+        "text": "",
         "repr.ellipsis": "dark_goldenrod",
         "repr.path": "medium_purple3",
         "repr.filename": "medium_purple1",
@@ -65,15 +58,14 @@ _theme = Theme(
 )
 """The default theme."""
 _icons = {
-    "debug": "",
-    "info": "",
-    "notice": "",
-    "success": "✔",
-    "warning": "❇",
+    "heading1": "",
+    "heading2": "",
     "error": "✖",
-    "critical": "✖",
-    "alert": "✖",
-    "emergency": "✖",
+    "warning": "⚠",
+    "success": "🗹",
+    "info": "🛈",
+    "emphasis": "",
+    "text": "",
 }
 """The default icons."""
 _console = Console(theme=_theme, markup=False)
@@ -84,24 +76,22 @@ _console = Console(theme=_theme, markup=False)
 class Level(StrEnum):
     """The print level."""
 
-    DEBUG = "debug"
-    """Debugging level."""
-    INFO = "info"
-    """Informational level."""
-    NOTICE = "notice"
-    """Notice level."""
-    SUCCESS = "success"
-    """Success level."""
-    WARNING = "warning"
-    """Warning level."""
+    HEADING1 = "heading1"
+    """Heading 1 level."""
+    HEADING2 = "heading2"
+    """Heading 2 level."""
     ERROR = "error"
     """Error level."""
-    CRITICAL = "critical"
-    """Critical level."""
-    ALERT = "alert"
-    """Alert level."""
-    EMERGENCY = "emergency"
-    """Emergency level."""
+    WARNING = "warning"
+    """Warning level."""
+    SUCCESS = "success"
+    """Success level."""
+    INFO = "info"
+    """Informational level."""
+    EMPHASIS = "emphasis"
+    """Emphasis level."""
+    TEXT = "text"
+    """Text level."""
 
 
 def pprint(
@@ -124,20 +114,12 @@ def pprint(
         console = Console(theme=_theme, file=file)
     icon = _icons[level]
 
-    if level == Level.EMERGENCY:
-        objects = [
-            Panel(
-                *objects,
-                title=f"{_icons[level]} Emergency {_icons[level]}",
-                expand=False,
-            )
-        ]
-    elif level == Level.ALERT:
-        objects = [
-            Panel(
-                *objects, title=f"{_icons[level]} Alert {_icons[level]}", expand=False
-            )
-        ]
+    if level == Level.HEADING1:
+        objects = [Panel(*objects, box=HORIZONTALS, expand=True)]
+    elif level == Level.HEADING2:
+        objects = [Panel(*objects, box=SIMPLE, expand=True)]
+    elif level in Level.ERROR:
+        objects = [Panel(*objects, box=ROUNDED, expand=False)]
     else:
         if icon:
             objects = [_icons[level], *objects]
@@ -148,9 +130,7 @@ def pprint(
 class Table(ConsoleRenderable):  # pylint: disable=too-few-public-methods
     """A table."""
 
-    def __init__(
-        self, *columns: Sequence[str], title: str | None = None, highlight: bool = False
-    ) -> None:
+    def __init__(self, *columns: Sequence[str], title: str | None = None, highlight: bool = False) -> None:
         """
         Create the table.
 
@@ -158,13 +138,9 @@ class Table(ConsoleRenderable):  # pylint: disable=too-few-public-methods
         :param title: The title of the table.
         :param highlight: Toggle the data highlighting.
         """
-        self._table = RichTable(
-            *columns, box=HORIZONTALS, title=title, highlight=highlight
-        )
+        self._table = RichTable(*columns, box=HORIZONTALS, title=title, highlight=highlight)
 
-    def __rich_console__(
-        self, console: Console, options: ConsoleOptions
-    ) -> RenderResult:
+    def __rich_console__(self, console: Console, options: ConsoleOptions) -> RenderResult:
         """
         Render the table.
 
@@ -237,9 +213,7 @@ class _ProgressBar(Progress):  # pylint: disable=too-few-public-methods
         if self.__table is None:
             renderable = bar_renderable
         else:
-            renderable = Columns(
-                (self.__table, bar_renderable), align="left", expand=True
-            )
+            renderable = Columns((self.__table, bar_renderable), align="left", expand=True)
         yield renderable
 
 
@@ -264,16 +238,13 @@ class ProgressBar(Iterable[ProgressType]):  # pylint: disable=too-few-public-met
         self.__sequence = sequence
         self.__description = description
 
-    def __iter__(self) -> ProgressType:
+    def __iter__(self) -> Generator[ProgressType]:
         """
         Iterate the sequence.
-
         :return: The next element of the sequence.
         """
         with self.__progress:
-            yield from self.__progress.track(
-                self.__sequence, description=self.__description
-            )
+            yield from self.__progress.track(self.__sequence, description=self.__description)
 
     def add_task(self, *, description: str, total: float = 0) -> TaskID:
         """
@@ -291,18 +262,14 @@ class ProgressBar(Iterable[ProgressType]):  # pylint: disable=too-few-public-met
         """
         return self.__progress.remove_task(task_id)
 
-    def update_task(
-        self, task_id: TaskID, *, description: str | None = None, advance: float = 1
-    ) -> None:
+    def update_task(self, task_id: TaskID, *, description: str | None = None, advance: float = 1) -> None:
         """
         Update a task
         :param task_id: the task ID
         :param description: the task description; set to None to not change it
         :param advance: the advancement
         """
-        self.__progress.update(
-            task_id=task_id, advance=advance, description=description
-        )
+        self.__progress.update(task_id=task_id, advance=advance, description=description)
 
     def __enter__(self) -> Self:
         """

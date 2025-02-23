@@ -33,13 +33,5 @@ pprint("This is the dictionary {'a':1,'b':2,'c':3}.", highlight=True)
 pprint()
 
 # The `level` parameter specifies the message severity.
-pprint("This is a debugging message.", level=Level.DEBUG)
-pprint("This is an informational message.")
-pprint("This is also an informational message.", level=Level.INFO)
-pprint("This is a notice message.", level=Level.NOTICE)
-pprint("This is a success message.", level=Level.SUCCESS)
-pprint("This is a warning message.", level=Level.WARNING)
-pprint("This is an error message.", level=Level.ERROR)
-pprint("This is a critical message.", level=Level.CRITICAL)
-pprint("This is an alert message.", level=Level.ALERT)
-pprint("This is an emergency message.", level=Level.EMERGENCY)
+for i in Level:
+    pprint(f"This is a {i} message.", level=i)

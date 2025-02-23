@@ -38,5 +38,5 @@ with ProgressBar(description="multi tasking") as progress:
 table = Table("what", "number", highlight=True)
 for i in ProgressBar(range(1000), table=table):
     if not i % 42:
-        table.add("random", random())  # nosec B311
+        table.add("random", random())
     sleep(0.001)

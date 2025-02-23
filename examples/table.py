@@ -30,7 +30,7 @@ pprint(table)
 # A table with some emphasized rows.
 table = Table("one", "two", "three")
 table.add("a", "b", "c")
-table.add(1, 2, 3, level=Level.NOTICE)
+table.add(1, 2, 3, level=Level.EMPHASIS)
 table.add(1.1, 2.2, 3.3, level=Level.SUCCESS)
 table.add("a", 2, 3.3, level=Level.ERROR)
 pprint(table)
