@@ -28,7 +28,8 @@ from rich.theme import Theme
 _theme = Theme(
     {
         "heading1": "bold bright_white",
-        "heading2": "bold italic bright_white",
+        "heading2": "bold underline bright_white",
+        "heading3": "bold bright_white",
         "error": "deep_pink2",
         "warning": "gold1",
         "success": "green_yellow",
@@ -61,6 +62,7 @@ _theme = Theme(
 _icons = {
     "heading1": "",
     "heading2": "",
+    "heading3": "",
     "error": "✖",
     "warning": "⚠",
     "success": "🗹",
@@ -81,6 +83,8 @@ class Level(StrEnum):
     """Heading 1 level."""
     HEADING2 = "heading2"
     """Heading 2 level."""
+    HEADING3 = "heading3"
+    """Heading 3 level."""
     ERROR = "error"
     """Error level."""
     WARNING = "warning"
