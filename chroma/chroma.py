@@ -4,7 +4,7 @@ from enum import StrEnum, unique
 from types import TracebackType
 from typing import IO, Any, Generator, Iterable, Self, Sequence
 
-from rich.box import HORIZONTALS, ROUNDED, SIMPLE
+from rich.box import HORIZONTALS, ROUNDED
 from rich.columns import Columns
 from rich.console import Console, ConsoleOptions, ConsoleRenderable, RenderableType, RenderResult
 from rich.panel import Panel
@@ -20,6 +20,7 @@ from rich.progress import (
     TextColumn,
     TimeRemainingColumn,
 )
+from rich.rule import Rule
 from rich.table import Table as RichTable
 from rich.text import Text
 from rich.theme import Theme
@@ -27,7 +28,7 @@ from rich.theme import Theme
 _theme = Theme(
     {
         "heading1": "bold bright_white",
-        "heading2": "bold bright_white",
+        "heading2": "bold italic bright_white",
         "error": "deep_pink2",
         "warning": "gold1",
         "success": "green_yellow",
@@ -114,17 +115,21 @@ def pprint(
         console = Console(theme=_theme, file=file)
     icon = _icons[level]
 
-    if level == Level.HEADING1:
-        objects = [Panel(*objects, box=HORIZONTALS, expand=True)]
-    elif level == Level.HEADING2:
-        objects = [Panel(*objects, box=SIMPLE, expand=True)]
-    elif level in Level.ERROR:
+    if len(objects) == 0:
+        console.print()
+        return
+
+    if level in Level.ERROR:
         objects = [Panel(*objects, box=ROUNDED, expand=False)]
     else:
         if icon:
             objects = [_icons[level], *objects]
 
+    if level == Level.HEADING1:
+        console.print()
     console.print(*objects, style=level, highlight=highlight)
+    if level == Level.HEADING1:
+        console.print(Rule(style="dim white"))
 
 
 class Table(ConsoleRenderable):  # pylint: disable=too-few-public-methods
