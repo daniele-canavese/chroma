@@ -31,9 +31,9 @@ _theme = Theme(
         "heading2": "bold underline bright_white",
         "heading3": "bold bright_white",
         "error": "deep_pink2",
-        "warning": "gold1",
+        "warning": "light_goldenrod1",
         "success": "green_yellow",
-        "info": "light_cyan1",
+        "info": "light_sky_blue1",
         "emphasis": "italic bright_white",
         "text": "",
         "repr.ellipsis": "dark_goldenrod",
@@ -46,8 +46,8 @@ _theme = Theme(
         "repr.none": "medium_orchid",
         "repr.bool_true": "medium_orchid1",
         "repr.bool_false": "medium_orchid1",
-        "repr.str": "sea_green2",
-        "repr.number": "dark_olive_green1",
+        "repr.str": "yellow2",
+        "repr.number": "indian_red1",
         "bar.back": "grey23",
         "bar.complete": "deep_pink2",
         "bar.finished": "green_yellow",
@@ -129,11 +129,9 @@ def pprint(
         if icon:
             objects = [_icons[level], *objects]
 
-    if level == Level.HEADING1:
-        console.print()
     console.print(*objects, style=level, highlight=highlight)
     if level == Level.HEADING1:
-        console.print(Rule(style="dim white"))
+        console.print(Rule(characters="⁓", style="light white"))
 
 
 class Table(ConsoleRenderable):  # pylint: disable=too-few-public-methods
