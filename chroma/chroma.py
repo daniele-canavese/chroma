@@ -102,7 +102,7 @@ class Level(StrEnum):
 def pprint(
     *objects: Any,
     file: IO[str] | None = None,
-    level: Level = Level.INFO,
+    level: Level = Level.TEXT,
     highlight: bool = False,
 ) -> None:
     """
