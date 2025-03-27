@@ -34,13 +34,20 @@ In particular, it allows you to:
 - nicely format tables where individual rows can be emphasized;
 - use progress bars with automatic ETAs.
 
-## 🏗️ Installation and removal
+## 🚧 Installation and removal
 
-`chroma` is managed via `poetry`.
+`chroma` makes use of `poetry` to install its dependencies. If you are using a Debian-like OS you can install them via
+the following commands:
 
-### Usage
+```shell
+sudo apt install python3 pipx
+pipx install poetry
+poetry self add poetry-plugin-shell # Optional, but useful.
+```
 
-`chroma` can be installed in a `poetry` environment with the following command:
+### I want to use it as a package
+
+If you want to use `chroma` as a package in a `poetry`-managed project , you can install it with the following command:
 
 ```shell
 poetry add git+https://github.com/daniele-canavese/chroma.git
@@ -52,22 +59,27 @@ Conversely, `chroma` can be uninstalled with:
 poetry remove chroma
 ```
 
-### Development
+### I want to develop it
 
 To create an environment for developing `chroma`, just run the command:
 
 ```shell
 poetry install
-poetry shell
 ```
 
-To remove all the development environments, execute:
+To test `chroma` you can also launch all the test cases with:
+
+```shell
+poetry run pytest
+```
+
+Instead, to completely remove the development environment, execute:
 
 ```shell
 poetry env remove --all
 ```
 
-## 🧭 Getting started
+## 🔥 Quick start
 
 The most important function in `chroma` is `pprint`, which is used to pretty
 print anything and can be used as a substitute to the traditional
@@ -83,7 +95,6 @@ The `examples` folder contains many commented usage examples; in particular:
 - `examples/progress.py` contains some progress bar instances;
 - `examples/table.py` presents different ways of printing tables.
 
-## 🗂️️ References
+## 📚️ References
 
-[1] [`rich`](https://github.com/Textualize/rich), a Python library for rich text
-and beautiful formatting in the terminal
+- [1] [`rich`](https://github.com/Textualize/rich)
