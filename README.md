@@ -15,7 +15,7 @@
 
 [Overview](#-overview) •
 [Installation and removal](#-installation-and-removal) •
-[Getting started](#-getting-started) •
+[Quick start](#-quick-start) •
 [References](#-references)
 
 </div>
